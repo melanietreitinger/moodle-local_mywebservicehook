@@ -22,5 +22,25 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+/**
+ * My webservice callback function
+ * @param object $function
+ * @param array $params
+ * @return false|mixed|void $result
+ */
+function local_mywebservicehook_override_webservice_execution($function, $params) {
+    // This is the function we want to override.
+    if ('XXXXXXXXXXXXXXXX' === $function->name) {
+        // Do something...
+        // YOUR CODE HERE!
+
+        // Call the original function.
+        $result = call_user_func_array([$function->classname, $function->methodname], $params);
+
+        // Return the result of the called function.
+        return $result;
+    }
+    return false; // Nothing happens with other webservice functions!
+}
 
 
